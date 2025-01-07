@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Contatos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 50%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      padding: 5px;
+      margin-right: 10px;
+    }
+    button {
+      padding: 5px 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cadastro de Contatos</h1>
+
+  <form id="contactForm">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" placeholder="Digite o nome" required>
+
+    <label for="phone">Telefone:</label>
+    <input type="tel" id="phone" placeholder="Digite o telefone" required>
+
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <table id="contactsTable">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Telefone</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Obtém os valores dos campos
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+
+      // Nova linhha
+      const table = document.getElementById('contactsTable').querySelector('tbody');
+      const newRow = table.insertRow();
+
+      // Adiciona as células
+      const nameCell = newRow.insertCell(0);
+      const phoneCell = newRow.insertCell(1);
+
+      // Preenche as células com os valoress
+      nameCell.textContent = name;
+      phoneCell.textContent = phone;
+
+      // Limpa os campos
+      document.getElementById('name').value = '';
+      document.getElementById('phone').value = '';
+    });
+  </script>
+</body>
+</html>
